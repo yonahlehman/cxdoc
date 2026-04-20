@@ -15,11 +15,25 @@ Do not invent, infer, or guess values.
 
 ---
 
+## 🔒 Security Note
+
+Before collecting any credentials, show this message to the user:
+
+"Do not provide production API keys. Use test or temporary credentials whenever possible. Some AI tools may store or log input data."
+
+Then proceed with the workflow.
+
+---
+
 ## Step 1: Select Authentication Method (Always First)
 
 Ask the user:
 
-> **Which auth method are you using: `refresh_token` or `client_credentials`?**
+> **How do you want to authenticate?**
+>
+> Choose one:
+> - `refresh_token` → use an API key or an existing refresh token (**recommended for most users**)
+> - `client_credentials` → use an OAuth client ID and client secret (**advanced setup**)
 
 Rules:
 
@@ -28,7 +42,13 @@ Rules:
 - Accept only:
   - `refresh_token`
   - `client_credentials`
-- Normalize variations like `refresh token` to `refresh_token`
+- Normalize variations like:
+  - `api key` → `refresh_token`
+  - `refresh token` → `refresh_token`
+  - `oauth` → `client_credentials`
+  - `oauth client` → `client_credentials`
+- If the user is unsure, recommend:
+  - `refresh_token`
 
 ---
 
@@ -81,7 +101,7 @@ If the user provides an invalid region, ask them to choose from the supported li
 
 Collect:
 
-- `refresh_token`
+- `refresh_token` (this can be either an API key or an existing refresh token)
 
 Use internally:
 
