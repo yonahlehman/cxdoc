@@ -130,17 +130,87 @@ Rules:
 
 ---
 
-## Step 5: Collect Optional Scanner Config
+## Step 5: Collect Optional Scanner Configuration (Updated)
 
-For each selected scanner:
-- collect optional config values as key:value pairs
+For each selected scanner, optionally collect scanner-specific configuration fields.
 
-Special rules:
+### Rules
+- The request body uses `config` as an array.
+- Each entry must include:
+  - `type`: scanner name
+  - `value`: object of scanner config in key:value format
+- Scanner config values are string key:value pairs.
+- Only collect config for selected scanners.
+- If none provided, use `{}` unless required by conditional rules.
+
+---
+
+### Supported Optional Fields by Scanner
+
+#### sast
+- presetName
+- defaultConfigId
+- incremental
+- filter
+- engineVerbose
+- languageMode
+- fastScanMode
+
+#### sca
+- filter
+- exploitablePath
+- lastSastScanTime
+- enableContainersScan
+- sbom
+
+#### kics
+- platforms
+- filter
+
+#### containers
+- userCustomImages
+- filesFilter
+- imagesFilter
+- packagesFilter
+- nonFinalStagesFilter
+
+#### apisec
+- swaggerFilter
+
+#### microengines
+- scorecard
+- 2ms
+- gitCommitHistory
+
+---
+
+### Conditional Rules
 
 - If using `apisec` for source analysis → also include `sast`
 - If using `containers` + `sca` → recommend `"enableContainersScan": "false"`
-- If SBOM scan → require `"sbom": "true"` and uploadFormat="single"
-- If confluence → only `microengines` with `"2ms": "true"`
+- For SBOM scans:
+  - include `sca`
+  - `"sbom": "true"`
+  - handler must include `"uploadFormat": "single"`
+- For Confluence:
+  - only `microengines`
+  - `"2ms": "true"`
+
+---
+
+### Assistant Behavior
+
+Ask only for relevant scanner configs.
+
+If none provided:
+
+```json
+{
+  "type": "<scanner>",
+  "value": {}
+}
+```
+
 
 ---
 
