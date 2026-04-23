@@ -195,6 +195,9 @@ For each selected scanner, optionally collect scanner-specific configuration fie
 - For Confluence:
   - only `microengines`
   - `"2ms": "true"`
+  - The field "scorecard" must NOT be accepted or passed at all
+    - If the user provides it → reject the request and ask for correction
+    - Do NOT include it in the request under any circumstance
 
 ---
 
