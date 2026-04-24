@@ -627,6 +627,7 @@ If either is missing:
 
 Collect:
 - `file_path`
+- `upload_url`
 
 Rules:
 
