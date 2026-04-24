@@ -426,6 +426,7 @@ Optional:
 
 Rules:
 
+- `region` is by default the same as region provided in step 1.
 - `project_name` is required
 - Do NOT ask for deprecated `repoUrl`
 - `criticality` must be an integer from 1 to 5
@@ -462,15 +463,12 @@ Body optional example:
 }
 ```
 
-### Required response test script behavior
-
-The Postman request must save:
-- `project_id = response.id`
-
 ## Step 2.2: Project Output Handling
 
 Tell the developer that:
 - `project_id` is required later for scan initiation
+
+Guide the user to inspect the response and extract that field for the next step.
 
 ---
 
@@ -496,6 +494,7 @@ Optional:
 
 Rules:
 
+- `region` is by default the same as region provided in step 1.
 - `application_name` is required
 - `criticality` must be an integer from 1 to 5
 - `tags` must be a valid JSON object
@@ -566,17 +565,12 @@ Validated example:
   "tags": {}
 }
 ```
-
-### Required response test script behavior
-
-The Postman request must save:
-- `application_id = response.id`
-
 ## Step 3.2: Application Output Handling
 
 Tell the developer that:
 - `application_id` may be useful for later organizational workflows
 - it is not required for the scan execution path in this intro flow
+Guide developer to extract that id from the response
 
 ---
 
@@ -590,8 +584,8 @@ Before generating this request, verify that the user has:
 
 ## Required Inputs
 
-Collect:
-- `region`
+- `region` - use region provided in step 1.
+
 
 ## Step 4.1: Generate Postman Request
 
@@ -605,16 +599,12 @@ Headers:
 
 No body.
 
-### Required response test script behavior
-
-The Postman request must save:
-- `upload_url = response.url`
-
 ## Step 4.2: Upload Link Output Handling
 
 Tell the developer that:
 - `upload_url` is required for the ZIP upload step
 - `upload_url` is also required for upload-based scan initiation
+Guide developer to extract this value from response
 
 ---
 
@@ -804,11 +794,6 @@ Validated intro flow body:
   ]
 }
 ```
-
-### Required response test script behavior
-
-The Postman request must save:
-- `scan_id = response.id`
 
 ### Important
 
