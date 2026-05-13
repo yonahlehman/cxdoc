@@ -3,8 +3,19 @@ version: 1
 checkmarx:
   scan:
     configs:
+
       sast:
-        presetName: 'ASA Premium'
-        fastScanMode: 'false'
-        incremental: 'false'
-        languageMode: 'multi'
+        presetName: "Checkmarx Default"
+        defaultConfigId: ""
+        incremental: "true"
+        filter: "*.java,*.js"
+        engineVerbose: "false"
+        languageMode: "multi"
+        fastScanMode: "true"
+
+      sca:
+        filter: "*.java,*.js"
+        exploitablePath: "true"
+        lastSastScanTime: "25"
+        enableContainersScan: "false"
+        sbom: "false"
