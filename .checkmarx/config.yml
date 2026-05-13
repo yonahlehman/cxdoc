@@ -3,8 +3,7 @@ version: 1
 checkmarx:
   scan:
     configs:
-
-     sast:
+      sast:
         incremental: "false"
         filter: "!node_modules,!dist,!build,!coverage"
         lightQueries: "false"
@@ -18,6 +17,7 @@ checkmarx:
         defaultConfigId: ""
         engineVerbose: "false"
         recommendedExclusions: "true"
+   
 
       sca:
         LastSastScanTime: "1"
