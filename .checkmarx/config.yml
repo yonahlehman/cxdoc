@@ -4,18 +4,45 @@ checkmarx:
   scan:
     configs:
 
-      sast:
-        presetName: "Checkmarx Default"
-        defaultConfigId: ""
-        incremental: "true"
-        filter: "*.java,*.js"
-        engineVerbose: "false"
+     sast:
+        incremental: "false"
+        filter: "!node_modules,!dist,!build,!coverage"
+        lightQueries: "false"
         languageMode: "multi"
+        baseBranch: "main"
         fastScanMode: "true"
+        incrementalChangeThreshold: "10"
+        presetName: "Checkmarx Default"
+        compliance: "false"
+        incrementalInBranch: "true"
+        defaultConfigId: ""
+        engineVerbose: "false"
+        recommendedExclusions: "true"
 
       sca:
-        filter: "*.java,*.js"
-        exploitablePath: "true"
-        lastSastScanTime: "25"
-        enableContainersScan: "false"
-        sbom: "false"
+        LastSastScanTime: "1"
+        vulnerabilityComparisonMode: "Branch-Based"
+        filter: "*.java,*.js,*.ts,package.json,package-lock.json"
+        ExploitablePath: "true"
+        javaLanguageVersion: "25"
+        pythonLanguageVersion: "3.13"
+
+      kics:
+        filter: "!node_modules,!dist,!build"
+        platforms: "Dockerfile,Kubernetes,Terraform,CloudFormation"
+
+      containers:
+        imagesFilter: ""
+        filesFilter: "!node_modules,!dist,!build"
+        packagesFilter: ""
+        nonFinalStagesFilter: "false"
+
+      apisec:
+        swaggerFilter: "*.json,*.yaml"
+
+      microengines:
+        gitCommitHistory: "true"
+
+      plugins:
+        ideScans: "false"
+        aiGuidedRemediation: "true"
