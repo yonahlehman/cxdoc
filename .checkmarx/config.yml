@@ -1,0 +1,10 @@
+version: 1
+
+checkmarx:
+  scan:
+    configs:
+      sast:
+        presetName: 'ASA Premium'
+        fastScanMode: 'false'
+        incremental: 'false'
+        languageMode: 'multi'
