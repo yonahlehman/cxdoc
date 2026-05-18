@@ -12,7 +12,6 @@ checkmarx:
         fastScanMode: "true"
         incrementalChangeThreshold: "10"
         presetName: "Checkmarx Default"
-        compliance: "false"
         incrementalInBranch: "true"
         defaultConfigId: ""
         engineVerbose: "false"
@@ -26,10 +25,13 @@ checkmarx:
         ExploitablePath: "true"
         javaLanguageVersion: "25"
         pythonLanguageVersion: "3.13"
+        enableContainersScan: "false"
+        sbom: "false"
 
       kics:
         filter: "!node_modules,!dist,!build"
         platforms: "Dockerfile,Kubernetes,Terraform,CloudFormation"
+        presetId: "f22bffe9-627b-498f-8161-11d636e97beb"
 
       containers:
         imagesFilter: ""
