@@ -45,6 +45,9 @@ checkmarx:
       microengines:
         gitCommitHistory: "true"
 
+      aisc:
+        filter: "*.java,*.js,*.ts,package.json,package-lock.json"
+
       plugins:
         ideScans: "false"
         aiGuidedRemediation: "true"
