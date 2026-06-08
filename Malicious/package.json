@@ -1,0 +1,20 @@
+{
+  "name": "malicious-package-demo",
+  "version": "1.0.0",
+  "description": "Demo of a potentially malicious package with security issues",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Running harmless test placeholder'"
+  },
+  "dependencies": {
+    "colors": "1.4.0",
+    "lodash": "4.17.23"
+  },
+  "keywords": [
+    "security",
+    "malicious",
+    "demo"
+  ],
+  "author": "Security Demo <demo@example.com>",
+  "license": "MIT"
+}
